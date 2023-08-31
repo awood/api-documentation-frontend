@@ -1,14 +1,19 @@
 import {APIConfiguration, apiConfigurations, pages} from "@apidocs/common";
 import {getCommand} from "./program.js";
 import path from "path";
-import {statSync} from 'fs';
+import {statSync, writeFileSync} from 'fs';
 import {createSitemap} from "sitemaps";
 import {UrlItem} from "sitemaps";
+import {collector} from './collector';
+
 
 interface Options {
     outputDir: string;
     baseUri: string;
 }
+
+// canonical json file
+const CANONICAL_JSON = 'canonical.json';
 
 export const createApiUrlItems = (config: ReadonlyArray<Readonly<APIConfiguration>>): Array<UrlItem> => {
 
@@ -21,6 +26,13 @@ export const createApiUrlItems = (config: ReadonlyArray<Readonly<APIConfiguratio
 export const createLandingPageUrlItem = (): UrlItem => ({
     loc: pages.getLandingPage()
 });
+
+const writeCollectorContent = (content:string, options: Options) => {
+    writeFileSync(
+        path.resolve(options.outputDir, CANONICAL_JSON),
+        content
+    );
+}
 
 export const execute = async (options: Options) => {
     const urlItems = [
@@ -35,6 +47,9 @@ export const execute = async (options: Options) => {
         filePath: path.join(options.outputDir, 'sitemap.xml'),
         urls: urlItems
     });
+
+    const collectorContent = await collector(apiConfigurations)
+    writeCollectorContent(collectorContent, options)
 }
 
 if (process.argv) {

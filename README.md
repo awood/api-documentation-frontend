@@ -14,10 +14,10 @@ Other packages includes:
   found in API catalog. It includes the list of the APIs, what group they form part of and their metadata.
 - [Prerender](./packages/prerender) is a cli tool to pre-render all the API catalog to increase SEO and make it easier to
   be read by bots.
-- [Sitemap](./packages/sitemap) is a cli tool to create the sitemap.xml of API catalog.
+- [Sitemap](./packages/sitemap) is a cli tool to create the sitemap.xml of API catalog. The sitemap package is also responsible for generating the [canonical format json file](./public/canonical.json) used by the Search Platform for indexing.
 - [transform](./packages/transform) is a cli tool to process the [discovery file](./packages/discovery/Discovery.yml)
   and create typescript code that can be loaded by API Catalog, the resulting code is stored in the
-  [Common code](./packages/common) package. The transform package is also responsible for generating the [canonical format json file](./public/canonical.json) used by the Search Platform for indexing.
+  [Common code](./packages/common) package.
 
 ## Updating the discovery file
 
