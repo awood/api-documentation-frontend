@@ -17,7 +17,7 @@ Other packages includes:
 - [Sitemap](./packages/sitemap) is a cli tool to create the sitemap.xml of API catalog.
 - [transform](./packages/transform) is a cli tool to process the [discovery file](./packages/discovery/Discovery.yml)
   and create typescript code that can be loaded by API Catalog, the resulting code is stored in the
-  [Common code](./packages/common) package.
+  [Common code](./packages/common) package. The transform package is also responsible for generating the [canonical format json file](./public/canonical.json) used by the Search Platform for indexing.
 
 ## Updating the discovery file
 

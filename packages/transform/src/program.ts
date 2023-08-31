@@ -8,5 +8,6 @@ export const getCommand = () => {
         )
         .requiredOption('-i, --input-dir <discovery-file>', 'Input directory.')
         .requiredOption('-o, --output-dir <output-dir>', 'Output directory.')
+        .requiredOption('-p, --public-dir <public-dir>', 'Public directory.')
         .option('--skip-api-fetch', 'Skip fetching the APIs and use whatever we have locally.', false);
 };

@@ -14,10 +14,13 @@ import sortedJsonStringify from 'sorted-json-stringify';
 import {getDocumentationContents} from "./documentation";
 import {APIContent} from "@apidocs/common";
 import {OPENAPI_DIR} from "./constants";
+import { discoveryCollector } from './collector';
+
 
 interface Options {
     inputDir: string;
     outputDir: string;
+    publicDir: string;
     skipApiFetch: boolean;
 }
 
@@ -34,6 +37,8 @@ const OUTPUT_APIS_DIR = 'apis';
 const CONTENT_FILE = 'content.json';
 // input discovery file
 const DISCOVERY_FILE = 'Discovery.yml';
+// canonical json file
+const CANONICAL_JSON = 'canonical.json';
 
 // How many files download at once (concurrency)
 const DOWNLOAD_AT_ONCE = 5;
@@ -171,6 +176,13 @@ const writeApiContent = (foundApis: Array<BuildApi>, options: Options) => {
     });
 };
 
+const writeCollectorContent = (content:string, options: Options) => {
+    writeFileSync(
+        path.resolve(options.publicDir, CANONICAL_JSON),
+        content
+    );
+}
+
 const writeTsTemplates = (foundApis: Array<BuildApi>, tags: Array<Tag>, options: Options) => {
     const templateFile = path.resolve('src', 'apis.eta');
     const templateString = readFileSync(templateFile).toString();
@@ -220,6 +232,9 @@ export const execute = async (options: Options) => {
     fetchDocumentationContents(buildApis, options);
     writeApiContent(buildApis, options);
 
+    // Creates the canonical.json file used during indexing by the Search Platform
+    const collectorContent = discoveryCollector(discoveryContent.apis)
+    writeCollectorContent(collectorContent, options)
 
     const tags = filterTags(discoveryContent.tags, buildApis);
 
