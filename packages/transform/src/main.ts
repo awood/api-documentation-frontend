@@ -15,11 +15,9 @@ import {getDocumentationContents} from "./documentation";
 import {APIContent} from "@apidocs/common";
 import {OPENAPI_DIR} from "./constants";
 
-
 interface Options {
     inputDir: string;
     outputDir: string;
-    publicDir: string;
     skipApiFetch: boolean;
 }
 
@@ -221,6 +219,7 @@ export const execute = async (options: Options) => {
     cleanUnusedApiFiles(buildApis, options);
     fetchDocumentationContents(buildApis, options);
     writeApiContent(buildApis, options);
+
 
     const tags = filterTags(discoveryContent.tags, buildApis);
 
