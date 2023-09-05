@@ -48,7 +48,7 @@ export const execute = async (options: Options) => {
         urls: urlItems
     });
 
-    const collectorContent = await collector(apiConfigurations)
+    const collectorContent = await collector(apiConfigurations, options.baseUri)
     writeCollectorContent(collectorContent, options)
 }
 
