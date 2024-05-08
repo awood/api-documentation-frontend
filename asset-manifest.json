@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/api-documentation-frontend/static/css/main.3cc1bf37.css",
-    "main.js": "/api-documentation-frontend/static/js/main.8c6c2c00.js",
+    "main.js": "/api-documentation-frontend/static/js/main.e2881948.js",
     "static/js/5322.d8e4af40.chunk.js": "/api-documentation-frontend/static/js/5322.d8e4af40.chunk.js",
     "static/js/9511.0184e6df.chunk.js": "/api-documentation-frontend/static/js/9511.0184e6df.chunk.js",
-    "static/js/1087.b90d1c93.chunk.js": "/api-documentation-frontend/static/js/1087.b90d1c93.chunk.js",
+    "static/js/1087.e156b9c5.chunk.js": "/api-documentation-frontend/static/js/1087.e156b9c5.chunk.js",
     "static/js/7223.363c2ff5.chunk.js": "/api-documentation-frontend/static/js/7223.363c2ff5.chunk.js",
     "static/js/291.c5d8177d.chunk.js": "/api-documentation-frontend/static/js/291.c5d8177d.chunk.js",
     "static/js/1718.6e251f8d.chunk.js": "/api-documentation-frontend/static/js/1718.6e251f8d.chunk.js",
     "static/js/8868.16d30dab.chunk.js": "/api-documentation-frontend/static/js/8868.16d30dab.chunk.js",
     "static/js/5169.28791e20.chunk.js": "/api-documentation-frontend/static/js/5169.28791e20.chunk.js",
     "static/js/6984.05fdcb75.chunk.js": "/api-documentation-frontend/static/js/6984.05fdcb75.chunk.js",
-    "static/js/1561.1ae264a2.chunk.js": "/api-documentation-frontend/static/js/1561.1ae264a2.chunk.js",
+    "static/js/1561.a23a5143.chunk.js": "/api-documentation-frontend/static/js/1561.a23a5143.chunk.js",
     "static/js/4576.87f84349.chunk.js": "/api-documentation-frontend/static/js/4576.87f84349.chunk.js",
     "static/js/3298.c07c6d39.chunk.js": "/api-documentation-frontend/static/js/3298.c07c6d39.chunk.js",
     "static/js/1292.f4b44f27.chunk.js": "/api-documentation-frontend/static/js/1292.f4b44f27.chunk.js",
@@ -132,7 +132,7 @@
     "static/media/status-icon-sprite.svg": "/api-documentation-frontend/static/media/status-icon-sprite.4fee9fefc3971799d2dd.svg",
     "index.html": "/api-documentation-frontend/index.html",
     "main.3cc1bf37.css.map": "/api-documentation-frontend/static/css/main.3cc1bf37.css.map",
-    "main.8c6c2c00.js.map": "/api-documentation-frontend/static/js/main.8c6c2c00.js.map",
+    "main.e2881948.js.map": "/api-documentation-frontend/static/js/main.e2881948.js.map",
     "7299.8c76628a.chunk.js.map": "/api-documentation-frontend/static/js/7299.8c76628a.chunk.js.map",
     "5328.f35f9abe.chunk.js.map": "/api-documentation-frontend/static/js/5328.f35f9abe.chunk.js.map",
     "7615.c56e9218.chunk.js.map": "/api-documentation-frontend/static/js/7615.c56e9218.chunk.js.map",
@@ -145,6 +145,6 @@
   },
   "entrypoints": [
     "static/css/main.3cc1bf37.css",
-    "static/js/main.8c6c2c00.js"
+    "static/js/main.e2881948.js"
   ]
 }
