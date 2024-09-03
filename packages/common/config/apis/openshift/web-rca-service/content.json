@@ -61,7 +61,7 @@
           }
         },
         "follow_up_status": {
-          "description": "Comma separated list of incident statuses. \ndone: done == true\nopen: done == false\narchived: archived == true\n\"\": default value, archived = false\nBy default you wont get any archived follow ups, but you can explicitly tell that you want archived.\nMultiple value create disjunction.\n\"done,archived\" -> done OR archived\n\"done,open\" -> \"done OR not done\" -> \"not archived\"",
+          "description": "Comma separated list of incident statuses.\ndone: done == true\nopen: done == false\narchived: archived == true\n\"\": default value, archived = false\nBy default you wont get any archived follow ups, but you can explicitly tell that you want archived.\nMultiple value create disjunction.\n\"done,archived\" -> done OR archived\n\"done,open\" -> \"done OR not done\" -> \"not archived\"",
           "in": "query",
           "name": "follow_up_status",
           "required": false,
@@ -211,6 +211,16 @@
           "required": false,
           "schema": {
             "type": "string"
+          }
+        },
+        "pinned": {
+          "description": "true restricts output to only events which have been pinned false restricts output to only events which have not been pinned. No value or nil means all events.",
+          "in": "query",
+          "name": "pinned",
+          "required": false,
+          "schema": {
+            "nullable": true,
+            "type": "boolean"
           }
         },
         "private": {
@@ -504,9 +514,6 @@
                 "follow_up_change": {
                   "$ref": "#/components/schemas/FollowUpChange"
                 },
-                "handoff": {
-                  "$ref": "#/components/schemas/Handoff"
-                },
                 "incident": {
                   "$ref": "#/components/schemas/ObjectReference"
                 },
@@ -517,6 +524,13 @@
                   "type": "string"
                 },
                 "occurred_at": {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "pinned": {
+                  "type": "boolean"
+                },
+                "pinned_at": {
                   "format": "date-time",
                   "type": "string"
                 },
@@ -565,6 +579,9 @@
             "occurred_at": {
               "format": "date-time",
               "type": "string"
+            },
+            "pinned": {
+              "type": "boolean"
             },
             "url": {
               "type": "string"
@@ -683,50 +700,6 @@
             }
           },
           "type": "object"
-        },
-        "Handoff": {
-          "allOf": [
-            {
-              "properties": {
-                "handoff_from": {
-                  "$ref": "#/components/schemas/User"
-                },
-                "handoff_to": {
-                  "$ref": "#/components/schemas/User"
-                },
-                "handoff_type": {
-                  "type": "string"
-                },
-                "id": {
-                  "format": "uuid",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            }
-          ]
-        },
-        "HandoffList": {
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/List"
-            },
-            {
-              "properties": {
-                "items": {
-                  "items": {
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/Handoff"
-                      }
-                    ]
-                  },
-                  "type": "array"
-                }
-              },
-              "type": "object"
-            }
-          ]
         },
         "Incident": {
           "allOf": [
@@ -2208,6 +2181,9 @@
             },
             {
               "$ref": "#/components/parameters/event_type"
+            },
+            {
+              "$ref": "#/components/parameters/pinned"
             }
           ],
           "responses": {
@@ -3527,7 +3503,7 @@
               "Bearer": []
             }
           ],
-          "summary": "Upate an Event"
+          "summary": "Update an Event"
         }
       },
       "/api/web-rca/v1/incidents/{incident_id}/follow_ups/{id}": {
